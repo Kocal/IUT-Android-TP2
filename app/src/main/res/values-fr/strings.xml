@@ -13,4 +13,10 @@
     <string name="label_zipcode">Code postal :</string>
     <string name="label_address">Adresse :</string>
     <string name="button_pick_a_date">Choisir une date</string>
+    <string name="hint_birthday">Format : aaaa/mm/jj</string>
+    <string name="hint_email">Format : adresse@domaine.fr</string>
+    <string name="hint_firstname">Adrien</string>
+    <string name="hint_lastname">Nougaret</string>
+    <string name="hint_zipcode">Format : XXXXX</string>
+    <string name="hint_address">Format: XXX Type Nom\nVille</string>
 </resources>

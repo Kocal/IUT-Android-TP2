@@ -61,7 +61,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/label_firstname" />
+                        android:layout_below="@+id/label_firstname"
+                        android:hint="@string/hint_firstname" />
 
                     <!-- Lastname -->
                     <TextView
@@ -80,7 +81,8 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentStart="true"
-                        android:layout_below="@+id/label_lastname" />
+                        android:layout_below="@+id/label_lastname"
+                        android:hint="@string/hint_lastname" />
 
                 </RelativeLayout>
 
@@ -107,6 +109,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/label_birthday"
                     android:layout_toStartOf="@+id/imageButton"
+                    android:hint="@string/hint_birthday"
                     android:inputType="date" />
 
                 <Button
@@ -160,13 +163,14 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/input_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
                 android:inputType="textEmailAddress" />
 
             <!-- Code postal -->
             <TextView
-                android:id="@+id/input_zipcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -174,8 +178,10 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <EditText
+                android:id="@+id/input_zipcode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/hint_zipcode"
                 android:inputType="number|numberDecimal" />
 
             <!-- Adresse -->
@@ -190,6 +196,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
+                android:hint="@string/hint_address"
                 android:inputType="textPostalAddress|textMultiLine"
                 android:minLines="2" />
 

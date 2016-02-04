@@ -12,4 +12,10 @@
     <string name="label_zipcode">ZIP Code:</string>
     <string name="label_address">Address:</string>
     <string name="button_pick_a_date">Choose a date</string>
+    <string name="hint_firstname">John</string>
+    <string name="hint_lastname">Smith</string>
+    <string name="hint_birthday">Format: yyyy/mm/dd</string>
+    <string name="hint_email">Format: address@domain.com</string>
+    <string name="hint_zipcode">Format: XXXXX</string>
+    <string name="hint_address">Format: XXX Name Type\nCity</string>
 </resources>
