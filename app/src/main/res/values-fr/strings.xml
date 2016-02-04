@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">IUT-TP2</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="label_avatar">Photo de profil :</string>
+    <string name="label_firstname">Prénom :</string>
+    <string name="label_lastname">Nom :</string>
+    <string name="label_birthday">Date de naissance :</string>
+    <string name="label_gender">Sexe :</string>
+    <string name="label_email">Adresse e-mail :</string>
+    <string name="input_gender_f">Femme</string>
+    <string name="input_gender_m">Homme</string>
+    <string name="label_zipcode">Code postal :</string>
+    <string name="label_address">Adresse :</string>
+    <string name="button_pick_a_date">Choisir une date</string>
+</resources>

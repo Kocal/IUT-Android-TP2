@@ -11,6 +11,5 @@
     <string name="input_gender_m">Male</string>
     <string name="label_zipcode">ZIP Code:</string>
     <string name="label_address">Address:</string>
-    <string name="button_avatar">Change avatar</string>
     <string name="button_pick_a_date">Choose a date</string>
 </resources>
