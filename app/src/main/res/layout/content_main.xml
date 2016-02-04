@@ -32,9 +32,11 @@
 
                 <!-- Avatar -->
                 <ImageView
+                    android:id="@+id/input_avatar"
                     android:layout_width="128dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="8dp"
+                    android:onClick="showAvatarChooserView"
                     android:src="@drawable/ic_account_circle" />
 
                 <RelativeLayout
