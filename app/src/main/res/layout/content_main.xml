@@ -118,6 +118,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:drawableStart="@drawable/ic_event"
+                    android:onClick="showBirthdayChooserFragment"
                     android:text="@string/button_pick_a_date" />
 
             </RelativeLayout>

@@ -1,6 +1,7 @@
 package fr.kocal.android.iut_tp2;
 
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -42,6 +44,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         startActivityForResult(intent, CODE_AVATAR);
+    }
+
+    public void showBirthdayChooserFragment(View v) {
+        DialogFragment newFragment = new DatePickerFragment((EditText) findViewById(R.id.input_birthday));
+        newFragment.show(getFragmentManager(), "datePicker");
     }
 
     @Override
