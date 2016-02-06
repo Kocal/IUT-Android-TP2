@@ -14,12 +14,12 @@ import java.util.Calendar;
  */
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
 
-    private final EditText input_birth;
+    private final EditText inputUserBirthday;
 
-    public DatePickerFragment(EditText input_birth) {
+    public DatePickerFragment(EditText inputUserBirthday) {
         super();
 
-        this.input_birth = input_birth;
+        this.inputUserBirthday = inputUserBirthday;
     }
 
     @Override
@@ -34,13 +34,12 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
 
     @Override
     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-        if (!input_birth.equals(null)) {
-
+        if (inputUserBirthday != null) {
             String str = year + "/"
                     + String.format("%02d", monthOfYear) + "/"
                     + String.format("%02d", dayOfMonth);
 
-            this.input_birth.setText(str);
+            this.inputUserBirthday.setText(str);
         }
     }
 }

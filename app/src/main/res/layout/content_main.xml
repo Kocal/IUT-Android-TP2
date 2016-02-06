@@ -135,6 +135,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <RadioGroup
+                android:id="@+id/input_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
