@@ -2,12 +2,12 @@ package fr.kocal.android.iut_tp2;
 
 import android.app.Activity;
 import android.app.DialogFragment;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.media.Image;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
@@ -23,15 +23,20 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 public class MainActivity extends AppCompatActivity {
 
     public static final int CODE_AVATAR = 1;
+    public static final int CODE_CROP_AVATAR = 2;
 
     public LayoutInflater layoutInflater;
     public View layoutToast;
 
     public ImageView inputUserAvatar;
-    public Uri userAvatarUri;
+    public Uri userAvatar;
+
     public EditText inputUserFirstname;
     public EditText inputUserLastname;
     public EditText inputUserBirthday;
@@ -85,8 +90,8 @@ public class MainActivity extends AppCompatActivity {
 
                 inputUserGender = (RadioButton) findViewById(inputUserGenderGroup.getCheckedRadioButtonId());
 
-                if (userAvatarUri != null && userAvatarUri.toString() != "") {
-                    this.viewUserAvatar.setImageURI(userAvatarUri);
+                if (userAvatar != null) {
+                    this.viewUserAvatar.setImageURI(userAvatar);
                 }
 
                 this.userInfos = "Prénom : " + inputUserFirstname.getText().toString().trim() + "\n" +
@@ -105,7 +110,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void showAvatarChooserView(View v) {
-        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
         startActivityForResult(intent, CODE_AVATAR);
     }
@@ -115,13 +121,48 @@ public class MainActivity extends AppCompatActivity {
         newFragment.show(getFragmentManager(), "datePicker");
     }
 
+    public void doCrop(Uri uri) {
+        try {
+            Intent cropIntent = new Intent("com.android.camera.action.CROP");
+
+            cropIntent.setDataAndType(uri, "image/*");
+            cropIntent.putExtra("crop", true);
+            cropIntent.putExtra("aspectX", 1);
+            cropIntent.putExtra("aspectY", 1);
+            cropIntent.putExtra("outputX", 256);
+            cropIntent.putExtra("outputY", 256);
+            cropIntent.putExtra("return-data", true);
+            startActivityForResult(cropIntent, CODE_CROP_AVATAR);
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(MainActivity.this, "Le crop d'image n'est pas supporté", Toast.LENGTH_SHORT).show();
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == CODE_AVATAR && resultCode == Activity.RESULT_OK) {
-            userAvatarUri = data.getData();
-            this.inputUserAvatar.setImageURI(userAvatarUri);
+            Uri uri = data.getData();
+//            doCrop(data.getData());
+
+            this.inputUserAvatar.setImageURI(uri);
+            this.userAvatar = uri;
+        }
+
+        if (requestCode == CODE_CROP_AVATAR) {
+            if (data == null) {
+                return;
+            }
+
+            InputStream input = null;
+
+            try {
+                input = getApplicationContext().getContentResolver().openInputStream(data.getData());
+                this.inputUserAvatar.setImageBitmap(BitmapFactory.decodeStream(input));
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
         }
     }
 
